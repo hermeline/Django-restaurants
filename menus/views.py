@@ -13,6 +13,7 @@ def home(request):
               <p>Pour tous les goûts :</p>"""
 
     return HttpResponse(text)
+from django.http import HttpResponse, Http404
 
 def view_menu(request, id_menu):
     """
@@ -23,24 +24,6 @@ def view_menu(request, id_menu):
     return HttpResponse(
         "Vous avez demandé le menu #{0} !".format(id_menu)
     )
-
-
-
-
-# Simuler une page non trouvée - renvoyer une page 404
-from django.http import HttpResponse, Http404
-
-
-def view_article(request, id_menu):
-
-    # Si l'ID est supérieur à 100, nous considérons que le menu n'existe pas
-
-    if int(id_menu) > 100:
-
-        raise Http404
-
-
-    return HttpResponse('<h1>Ce menu n\'existe pas</h1>')
 
 
 
